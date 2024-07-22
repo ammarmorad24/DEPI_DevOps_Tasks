@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_USER=petclinic
+      - MYSQL_PASSWORD=petclinic
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=petclinic
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_vol:/var/lib/mysql
+  app:
+    build:
+      context: .
+      target: prod
+    environment:
+      - MYSQL_URL=jdbc:mysql://db:3306/petclinic
+      - SPRING_PROFILES_ACTIVE=mysql
+volumes:
+  mysql_vol:
+
+
