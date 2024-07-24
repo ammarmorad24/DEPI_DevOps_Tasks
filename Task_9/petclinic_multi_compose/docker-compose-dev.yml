@@ -7,8 +7,6 @@ services:
       - POSTGRES_USER=petclinic
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_DB=petclinic
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_vol:/var/lib/postgresql/data
   app:
